@@ -1,0 +1,45 @@
+internal class moviles
+{
+    int id = 0;
+    string marca = "";
+    string modelo = "";
+    double pulgadas;
+
+
+    public moviles() { }
+
+    public void setId(int newid)
+    {
+        id = newid;
+    }
+    public int getId()
+    {
+        return id;
+    }
+    public void setMarca(string newmarca)
+    {
+        marca = newmarca;
+    }
+    public string getMarca()
+    {
+        return marca;
+    }
+    public void setModelo(string newmodelo)
+    {
+        modelo = newmodelo;
+    }
+    public string getModelo()
+    {
+        return modelo;
+    }
+    public void setPulgadas(double newPulgadas)
+    {
+        pulgadas = newPulgadas;
+    }
+    public double getPulgadas()
+    {
+        return pulgadas;
+    }
+
+
+}
