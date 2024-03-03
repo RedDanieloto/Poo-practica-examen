@@ -1,0 +1,38 @@
+internal class tablet : moviles
+{
+    string compatibilidad;
+    string tipotablet;
+    double pulgadas;
+
+    public tablet()
+    {
+
+    }
+
+    public void setCompatibilidad(string newcompatibilidad)
+    {
+        compatibilidad = newcompatibilidad;
+    }
+    public string getCompatibilidad()
+    {
+        return compatibilidad;
+    }
+    public void setTipotablet(string newtipotablet)
+    {
+        tipotablet = newtipotablet;
+    }
+    public string getTipotablet()
+    {
+        return tipotablet;
+    }
+
+    public void setPulgadas(double newpulgadas)
+    {
+        pulgadas = newpulgadas;
+    }
+    public double getPulgadas()
+    {
+        return pulgadas;
+    }
+
+}
