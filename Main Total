@@ -1,0 +1,96 @@
+celular[] celulares = new celular[20];
+tablet[] tablets = new tablet[20];
+int contadorcelulares = 0;
+int contadortablets = 0;
+bool continuar = true;
+string opcion;
+do
+{
+    Console.Clear();
+    Console.WriteLine("Dispositivos moviles");
+    Console.WriteLine("=====================================");
+    Console.WriteLine("1) Mostrar celulares");
+    Console.WriteLine("2) Mostrar tablets");
+    Console.WriteLine("3) Agregar celular");
+    Console.WriteLine("4) Agregar tablet");
+    Console.WriteLine("9) Salir");
+    Console.WriteLine("=====================================");
+    Console.WriteLine("Escriba la opcion");
+    opcion = Console.ReadLine();
+
+
+    switch (opcion)
+    {
+        case "1":
+            for (int i = 0; i < contadorcelulares; i++)
+            {
+                Console.WriteLine("ID: " + celulares[i].getId());
+                Console.WriteLine("Marca: " + celulares[i].getMarca());
+                Console.WriteLine("Modelo: " + celulares[i].getModelo());
+                Console.WriteLine("Red movil: " + celulares[i].getRedmovil());
+                Console.WriteLine("Cargador: " + celulares[i].getCargador());
+                Console.WriteLine("Bateria: " + celulares[i].getBateria());
+                Console.WriteLine("=====================================");
+            }
+
+            Console.ReadKey();
+            break;
+
+        case "2":
+            for (int i = 0; i < contadortablets; i++)
+            {
+                Console.WriteLine("ID: " + tablets[i].getId());
+                Console.WriteLine("Marca: " + tablets[i].getMarca());
+                Console.WriteLine("Modelo: " + tablets[i].getModelo());
+                Console.WriteLine("Compatibilidad: " + tablets[i].getCompatibilidad());
+                Console.WriteLine("Pulgadas: " + tablets[i].getPulgadas());
+                Console.WriteLine("Tipo de tablet: " + tablets[i].getTipotablet());
+                Console.WriteLine("=====================================");
+            }
+
+            Console.ReadKey();
+            break;
+
+        case "3":
+            celulares[contadorcelulares] = new celular();
+            Console.WriteLine("Indique la ID:");
+            celulares[contadorcelulares].setId(int.Parse(Console.ReadLine()));
+            Console.WriteLine("Indique la marca:");
+            celulares[contadorcelulares].setMarca(Console.ReadLine());
+            Console.WriteLine("Indique el modelo: ");
+            celulares[contadorcelulares].setModelo(Console.ReadLine());
+            Console.WriteLine("Indique la red movil: ");
+            celulares[contadorcelulares].setRedmovil(Console.ReadLine());
+            Console.WriteLine("Indique el tipo de cargador:");
+            celulares[contadorcelulares].setCargador(Console.ReadLine());
+            Console.WriteLine("Indique la bateria: ");
+            celulares[contadorcelulares].setBateria(int.Parse(Console.ReadLine()));
+            contadorcelulares += 1;
+            break;
+
+
+        case "4":
+            tablets[contadortablets] = new tablet();
+            Console.WriteLine("Indjque la ID:");
+            tablets[contadortablets].setId(int.Parse(Console.ReadLine()));
+            Console.WriteLine("Indique la marca:");
+            tablets[contadortablets].setMarca(Console.ReadLine());
+            Console.WriteLine("Indique el modelo: ");
+            tablets[contadortablets].setModelo(Console.ReadLine());
+            Console.WriteLine("Indique la compatibilidad del dispositivo: ");
+            tablets[contadortablets].setCompatibilidad(Console.ReadLine());
+            Console.WriteLine("Indique el tipo de tablet: ");
+            tablets[contadortablets].setTipotablet(Console.ReadLine());
+            Console.WriteLine("Indique las pulgadas: ");
+            tablets[contadortablets].setPulgadas(double.Parse(Console.ReadLine()));
+            contadortablets += 1;
+            break;
+
+        case "9":
+            continuar = false;
+            break;
+        default: break;
+    }
+}
+while (continuar);
+
