@@ -1,0 +1,38 @@
+internal class celular : moviles
+{
+
+    string redmovil;
+    string cargador;
+    int bateria;
+
+    public celular()
+    {
+
+    }
+
+    public void setRedmovil(string newredmovil)
+    {
+        redmovil = newredmovil;
+    }
+    public string getRedmovil()
+    {
+        return redmovil;
+    }
+    public void setCargador(string newcargador)
+    {
+        cargador = newcargador;
+    }
+    public string getCargador()
+    {
+        return cargador;
+    }
+    public void setBateria(int newbateria)
+    {
+        bateria = newbateria;
+    }
+    public int getBateria()
+    {
+        return bateria;
+    }
+
+}
