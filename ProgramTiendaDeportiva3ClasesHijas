@@ -1,0 +1,161 @@
+using Cacatua;
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Guante[] guantes = new Guante[20];
+        Tenis[] tenis = new Tenis[20];
+        Playera[] playeras = new Playera[20];
+        int contadorGuantes = 0;
+        int contadorTenis = 0;
+        int contadorPlayeras = 0;
+        bool continuar = true;
+        string opcion;
+
+        do
+        {
+            Console.Clear();
+            Console.WriteLine("---------------BIENVENIDO A LA TIENDA DEPORTIVA--------------------");
+            Console.WriteLine("======================================================");
+            Console.WriteLine("1) Mostrar Guantes");
+            Console.WriteLine("2) Mostrar Tenis");
+            Console.WriteLine("3) Mostrar Playeras");
+            Console.WriteLine("4) Agregar Guantes");
+            Console.WriteLine("5) Agregar Tenis");
+            Console.WriteLine("6) Agregar Playeras");
+            Console.WriteLine("7) Salir");
+            Console.WriteLine("=====================================");
+            Console.WriteLine("Elige una opción:");
+            opcion = Console.ReadLine();
+
+            switch (opcion)
+            {
+                case "1":
+                    OrdenarPorID(guantes, contadorGuantes);
+                    MostrarGuantes(guantes, contadorGuantes);
+                    Console.ReadKey();
+                    break;
+
+                case "2":
+                    OrdenarPorID(tenis, contadorTenis);
+                    MostrarTenis(tenis, contadorTenis);
+                    Console.ReadKey();
+                    break;
+
+                case "3":
+                    OrdenarPorID(playeras, contadorPlayeras);
+                    MostrarPlayeras(playeras, contadorPlayeras);
+                    Console.ReadKey();
+                    break;
+
+                case "4":
+                    guantes[contadorGuantes] = new Guante();
+                    Console.WriteLine("Indique la ID:");
+                    guantes[contadorGuantes].setId(int.Parse(Console.ReadLine()));
+                    Console.WriteLine("Indique el modelo: ");
+                    guantes[contadorGuantes].setModelo(Console.ReadLine());
+                    Console.WriteLine("Indique el color: ");
+                    guantes[contadorGuantes].setColor(Console.ReadLine());
+                    Console.WriteLine("Indique el tipo de agarre:");
+                    guantes[contadorGuantes].setTipoAgarre(Console.ReadLine());
+                    Console.WriteLine("Indique la medida: ");
+                    guantes[contadorGuantes].setMedida(int.Parse(Console.ReadLine()));
+                    contadorGuantes++;
+                    break;
+
+
+                case "5":
+                    tenis[contadorTenis] = new Tenis();
+                    Console.WriteLine("Indique la ID:");
+                    tenis[contadorTenis].setId(int.Parse(Console.ReadLine()));
+                    Console.WriteLine("Indique el modelo: ");
+                    tenis[contadorTenis].setModelo(Console.ReadLine());
+                    Console.WriteLine("Indique el tipo de taco: ");
+                    tenis[contadorTenis].setTipoTaco(Console.ReadLine());
+                    Console.WriteLine("Indique el tipo de suela: ");
+                    tenis[contadorTenis].setTipoSuela(Console.ReadLine());
+                    Console.WriteLine("Indique la altura del taco: ");
+                    tenis[contadorTenis].setAlturaTaco(double.Parse(Console.ReadLine()));
+                    contadorTenis++;
+                    break;
+
+                case "6":
+                    playeras[contadorPlayeras] = new Playera();
+                    Console.WriteLine("Indique la ID:");
+                    playeras[contadorPlayeras].setId(int.Parse(Console.ReadLine()));
+                    Console.WriteLine("Indique el modelo: ");
+                    playeras[contadorPlayeras].setModelo(Console.ReadLine());
+                    Console.WriteLine("Indique el color: ");
+                    playeras[contadorPlayeras].setColor(Console.ReadLine());
+                    Console.WriteLine("Indique el tamaño: ");
+                    playeras[contadorPlayeras].setTamaño(Console.ReadLine());
+                    Console.WriteLine("Indique el material: ");
+                    playeras[contadorPlayeras].setMaterial(Console.ReadLine());
+                    contadorPlayeras++;
+                    break;
+
+                case "7":
+                    continuar = false;
+                    break;
+                default: break;
+            }
+        } while (continuar);
+    }
+
+    static void MostrarGuantes(Guante[] guantes, int contador)
+    {
+        for (int i = 0; i < contador; i++)
+        {
+            Console.WriteLine("ID: " + guantes[i].getId());
+            Console.WriteLine("Modelo: " + guantes[i].getModelo());
+            Console.WriteLine("Color: " + guantes[i].getColor());
+            Console.WriteLine("Tipo de Agarre: " + guantes[i].getTipoAgarre());
+            Console.WriteLine("Medida: " + guantes[i].getMedida());
+            Console.WriteLine("=====================================");
+        }
+    }
+
+    static void MostrarTenis(Tenis[] tenis, int contador)
+    {
+        for (int i = 0; i < contador; i++)
+        {
+            Console.WriteLine("ID: " + tenis[i].getId());
+            Console.WriteLine("Modelo: " + tenis[i].getModelo());
+            Console.WriteLine("Tipo de Taco: " + tenis[i].getTipoTaco());
+            Console.WriteLine("Tipo de Suela: " + tenis[i].getTipoSuela());
+            Console.WriteLine("Altura del Taco: " + tenis[i].getAlturaTaco());
+            Console.WriteLine("=====================================");
+        }
+    }
+
+    static void MostrarPlayeras(Playera[] playeras, int contador)
+    {
+        for (int i = 0; i < contador; i++)
+        {
+            Console.WriteLine("ID: " + playeras[i].getId());
+            Console.WriteLine("Modelo: " + playeras[i].getModelo());
+            Console.WriteLine("Color: " + playeras[i].getColor());
+            Console.WriteLine("Tamaño: " + playeras[i].getTamaño());
+            Console.WriteLine("Material: " + playeras[i].getMaterial());
+            Console.WriteLine("=====================================");
+        }
+    }
+
+    static void OrdenarPorID(ArticuloDeportivo[] articulos, int contador)
+    {
+        for (int i = 0; i < contador - 1; i++)
+        {
+            for (int j = 0; j < contador - 1 - i; j++)
+            {
+                if (articulos[j].getId() > articulos[j + 1].getId())
+                {
+                    ArticuloDeportivo temp = articulos[j];
+                    articulos[j] = articulos[j + 1];
+                    articulos[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
