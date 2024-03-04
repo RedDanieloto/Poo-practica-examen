@@ -1,0 +1,36 @@
+internal class Tenis : ArticuloDeportivo
+{
+    protected string tipoTaco;
+    protected string tipoSuela;
+    protected double alturaTaco;
+
+    public Tenis()
+    {
+
+    }
+
+    public void setTipoTaco(string newtipoTaco)
+    {
+        tipoTaco = newtipoTaco;
+    }
+    public string getTipoTaco()
+    {
+        return tipoTaco;
+    }
+    public void setTipoSuela(string newtipoSuela)
+    {
+        tipoSuela = newtipoSuela;
+    }
+    public string getTipoSuela()
+    {
+        return tipoSuela;
+    }
+    public void setAlturaTaco(double newalturaTaco)
+    {
+        alturaTaco = newalturaTaco;
+    }
+    public double getAlturaTaco()
+    {
+        return alturaTaco;
+    }
+}
