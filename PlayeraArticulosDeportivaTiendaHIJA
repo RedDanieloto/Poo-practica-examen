@@ -1,0 +1,36 @@
+ class Playera : ArticuloDeportivo
+ {
+     private string color;
+     private string tamaño;
+     private string material;
+
+     public void setColor(string color)
+     {
+         this.color = color;
+     }
+
+     public string getColor()
+     {
+         return color;
+     }
+
+     public void setTamaño(string tamaño)
+     {
+         this.tamaño = tamaño;
+     }
+
+     public string getTamaño()
+     {
+         return tamaño;
+     }
+
+     public void setMaterial(string material)
+     {
+         this.material = material;
+     }
+
+     public string getMaterial()
+     {
+         return material;
+     }
+ }
