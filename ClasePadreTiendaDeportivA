@@ -1,0 +1,34 @@
+
+internal class ArticuloDeportivo
+{
+    protected int id = 0;
+    protected string marca = "";
+    protected string modelo = "";
+
+    public ArticuloDeportivo() { }
+
+    public void setId(int newid)
+    {
+        id = newid;
+    }
+    public int getId()
+    {
+        return id;
+    }
+    public void setMarca(string newmarca)
+    {
+        marca = newmarca;
+    }
+    public string getMarca()
+    {
+        return marca;
+    }
+    public void setModelo(string newmodelo)
+    {
+        modelo = newmodelo;
+    }
+    public string getModelo()
+    {
+        return modelo;
+    }
+}
