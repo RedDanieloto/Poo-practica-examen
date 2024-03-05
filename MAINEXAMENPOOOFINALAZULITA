@@ -1,0 +1,258 @@
+using Examen_POO;
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        cancion[] canciones = new cancion[10];
+        cancion[] cancionesFavoritas = new cancion[10];
+        int tempid = 0;
+        string tempNombre, tempArtista, tempAlbum, tempDuracion;
+        string opcion;
+        int id_cancion;
+        int num_canciones = 0;
+        int num_canciones_fav = 0;
+
+        bool continuar = true;
+        do
+        {
+
+            Console.Clear();
+            Console.WriteLine("A.-Agregar Canciones");
+            Console.WriteLine("B.-Mostrar Canciones");
+            Console.WriteLine("C.-Agregar Canciones a Favoritos");
+            Console.WriteLine("D.-Mostrar Favoritos");
+            Console.WriteLine("E.-Mostrar Ordenadas");
+            Console.WriteLine("F.-Salir");
+            opcion = Console.ReadLine();
+            switch (opcion)
+            {
+                case "A":
+                    canciones[num_canciones] = new cancion();
+                    Console.Write("Ingrese el ID de la canción: ");
+                    canciones[num_canciones].setId(int.Parse(Console.ReadLine()));
+                    Console.Write("Ingrese el Nombre de la cancion: ");
+                    canciones[num_canciones].setNombre(Console.ReadLine());
+                    Console.Write("Ingrese el Artista de la cancion: ");
+                    canciones[num_canciones].setArtista(Console.ReadLine());
+                    Console.Write("Ingrese el Album de la cancion: ");
+                    canciones[num_canciones].setAlbum(Console.ReadLine());
+                    Console.Write("Ingrese la Duracion de la cancion: ");
+                    canciones[num_canciones].setDuracion(Console.ReadLine());
+                    num_canciones++;
+                    break;
+                case "B":
+                    for (int i = 0; i < num_canciones; i++)
+                    {
+                        Console.WriteLine("========================");
+                        Console.WriteLine("ID: " + canciones[i].getId());
+                        Console.WriteLine("Nombre: " + canciones[i].getNombre());
+                        Console.WriteLine("Artista: " + canciones[i].getArtista());
+                        Console.WriteLine("Album: " + canciones[i].getAlbum());
+                        Console.WriteLine("Duracion: " + canciones[i].getDuracion());
+                    }
+                    Console.ReadKey();
+                    break;
+                case "C":
+                    for (int i = 0; i < num_canciones; i++)
+                    {
+                        Console.WriteLine("========================");
+                        Console.WriteLine("ID: " + canciones[i].getId());
+                        Console.WriteLine("Nombre: " + canciones[i].getNombre());
+                        Console.WriteLine("Artista: " + canciones[i].getArtista());
+                        Console.WriteLine("Album: " + canciones[i].getAlbum());
+                        Console.WriteLine("Duracion: " + canciones[i].getDuracion());
+                    }
+                    Console.Write("Ingrese la ID de la cancion a agregar a favoritos: ");
+                    id_cancion = int.Parse(Console.ReadLine());
+                    for (int i = 0; i < num_canciones; i++)
+                    {
+                        if (id_cancion == canciones[i].getId())
+                        {
+                            cancionesFavoritas[num_canciones_fav] = new cancion();
+                            cancionesFavoritas[num_canciones_fav].setId(canciones[i].getId());
+                            cancionesFavoritas[num_canciones_fav].setNombre(canciones[i].getNombre());
+                            cancionesFavoritas[num_canciones_fav].setArtista(canciones[i].getArtista());
+                            cancionesFavoritas[num_canciones_fav].setAlbum(canciones[i].getAlbum());
+                            cancionesFavoritas[num_canciones_fav].setDuracion(canciones[i].getDuracion());
+                            Console.WriteLine("Cancion agregada correctamente");
+                            num_canciones_fav++;
+                        }
+                    }
+                    break;
+                case "D":
+                    for (int i = 0; i < num_canciones_fav; i++)
+                    {
+                        Console.WriteLine("========================");
+                        Console.WriteLine("ID: " + cancionesFavoritas[i].getId());
+                        Console.WriteLine("Nombre: " + cancionesFavoritas[i].getNombre());
+                        Console.WriteLine("Artista: " + cancionesFavoritas[i].getArtista());
+                        Console.WriteLine("Album: " + cancionesFavoritas[i].getAlbum());
+                        Console.WriteLine("Duracion: " + cancionesFavoritas[i].getDuracion());
+                    }
+                    Console.ReadKey();
+                    break;
+                case "E":
+                    Console.WriteLine("a) Favoritas de Mayor a Menor\nb) Favoritas de Menor a Mayor\nc) Originales de Mayor a Menor\nd) Originales de Menor a Mayor");
+                    opcion = Console.ReadLine().ToUpper();
+                    switch (opcion)
+                    {
+                        case "A":
+                            for (int i = 0; i < num_canciones_fav; i++)
+                            {
+                                for (int j = 0; j < num_canciones_fav - 1; j++)
+                                {
+                                    if (cancionesFavoritas[j].getId() < cancionesFavoritas[j + 1].getId())
+                                    {
+                                        tempid = cancionesFavoritas[j].getId();
+                                        tempNombre = cancionesFavoritas[j].getNombre();
+                                        tempArtista = cancionesFavoritas[j].getArtista();
+                                        tempAlbum = cancionesFavoritas[j].getAlbum();
+                                        tempDuracion = cancionesFavoritas[j].getDuracion();
+                                        cancionesFavoritas[j].setId(cancionesFavoritas[j + 1].getId());
+                                        cancionesFavoritas[j].setNombre(cancionesFavoritas[j + 1].getNombre());
+                                        cancionesFavoritas[j].setArtista(cancionesFavoritas[j + 1].getArtista());
+                                        cancionesFavoritas[j].setAlbum(cancionesFavoritas[j + 1].getAlbum());
+                                        cancionesFavoritas[j].setDuracion(cancionesFavoritas[j + 1].getDuracion());
+                                        cancionesFavoritas[j + 1].setId(tempid);
+                                        cancionesFavoritas[j + 1].setNombre(tempNombre);
+                                        cancionesFavoritas[j + 1].setArtista(tempArtista);
+                                        cancionesFavoritas[j + 1].setAlbum(tempAlbum);
+                                        cancionesFavoritas[j + 1].setDuracion(tempDuracion);
+                                    }
+                                }
+                            }
+                            for (int i = 0; i < num_canciones_fav; i++)
+                            {
+                                Console.WriteLine("========================");
+                                Console.WriteLine("ID: " + cancionesFavoritas[i].getId());
+                                Console.WriteLine("Nombre: " + cancionesFavoritas[i].getNombre());
+                                Console.WriteLine("Artista: " + cancionesFavoritas[i].getArtista());
+                                Console.WriteLine("Album: " + cancionesFavoritas[i].getAlbum());
+                                Console.WriteLine("Duracion: " + cancionesFavoritas[i].getDuracion());
+                            }
+                            Console.ReadKey();
+                            break;
+                        case "B":
+
+                            for (int i = 0; i < num_canciones_fav; i++)
+                            {
+                                for (int j = 0; j < num_canciones_fav - 1; j++)
+                                {
+                                    if (cancionesFavoritas[j].getId() > cancionesFavoritas[j + 1].getId())
+                                    {
+                                        tempid = cancionesFavoritas[j].getId();
+                                        tempNombre = cancionesFavoritas[j].getNombre();
+                                        tempArtista = cancionesFavoritas[j].getArtista();
+                                        tempAlbum = cancionesFavoritas[j].getAlbum();
+                                        tempDuracion = cancionesFavoritas[j].getDuracion();
+                                        cancionesFavoritas[j].setId(cancionesFavoritas[j + 1].getId());
+                                        cancionesFavoritas[j].setNombre(cancionesFavoritas[j + 1].getNombre());
+                                        cancionesFavoritas[j].setArtista(cancionesFavoritas[j + 1].getArtista());
+                                        cancionesFavoritas[j].setAlbum(cancionesFavoritas[j + 1].getAlbum());
+                                        cancionesFavoritas[j].setDuracion(cancionesFavoritas[j + 1].getDuracion());
+                                        cancionesFavoritas[j + 1].setId(tempid);
+                                        cancionesFavoritas[j + 1].setNombre(tempNombre);
+                                        cancionesFavoritas[j + 1].setArtista(tempArtista);
+                                        cancionesFavoritas[j + 1].setAlbum(tempAlbum);
+                                        cancionesFavoritas[j + 1].setDuracion(tempDuracion);
+                                    }
+                                }
+                            }
+                            for (int i = 0; i < num_canciones_fav; i++)
+                            {
+                                Console.WriteLine("========================");
+                                Console.WriteLine("ID: " + cancionesFavoritas[i].getId());
+                                Console.WriteLine("Nombre: " + cancionesFavoritas[i].getNombre());
+                                Console.WriteLine("Artista: " + cancionesFavoritas[i].getArtista());
+                                Console.WriteLine("Album: " + cancionesFavoritas[i].getAlbum());
+                                Console.WriteLine("Duracion: " + cancionesFavoritas[i].getDuracion());
+                            }
+                            Console.ReadKey();
+                            break;
+                        case "C":
+                            for (int i = 0; i < num_canciones; i++)
+                            {
+                                for (int j = 0; j < num_canciones - 1; j++)
+                                {
+                                    if (canciones[j].getId() < canciones[j + 1].getId())
+                                    {
+                                        tempid = canciones[j].getId();
+                                        tempNombre = canciones[j].getNombre();
+                                        tempArtista = canciones[j].getArtista();
+                                        tempAlbum = canciones[j].getAlbum();
+                                        tempDuracion = canciones[j].getDuracion();
+                                        canciones[j].setId(canciones[j + 1].getId());
+                                        canciones[j].setNombre(canciones[j + 1].getNombre());
+                                        canciones[j].setArtista(canciones[j + 1].getArtista());
+                                        canciones[j].setAlbum(canciones[j + 1].getAlbum());
+                                        canciones[j].setDuracion(canciones[j + 1].getDuracion());
+                                        canciones[j + 1].setId(tempid);
+                                        canciones[j + 1].setNombre(tempNombre);
+                                        canciones[j + 1].setArtista(tempArtista);
+                                        canciones[j + 1].setAlbum(tempAlbum);
+                                        canciones[j + 1].setDuracion(tempDuracion);
+                                    }
+                                }
+                            }
+                            for (int i = 0; i < num_canciones; i++)
+                            {
+                                Console.WriteLine("========================");
+                                Console.WriteLine("ID: " + canciones[i].getId());
+                                Console.WriteLine("Nombre: " + canciones[i].getNombre());
+                                Console.WriteLine("Artista: " + canciones[i].getArtista());
+                                Console.WriteLine("Album: " + canciones[i].getAlbum());
+                                Console.WriteLine("Duracion: " + canciones[i].getDuracion());
+                            }
+                            Console.ReadKey();
+                            break;
+                        case "D":
+                            for (int i = 0; i < num_canciones; i++)
+                            {
+                                for (int j = 0; j < num_canciones - 1; j++)
+                                {
+                                    if (canciones[j].getId() > canciones[j + 1].getId())
+                                    {
+                                        tempid = canciones[j].getId();
+                                        tempNombre = canciones[j].getNombre();
+                                        tempArtista = canciones[j].getArtista();
+                                        tempAlbum = canciones[j].getAlbum();
+                                        tempDuracion = canciones[j].getDuracion();
+                                        canciones[j].setId(canciones[j + 1].getId());
+                                        canciones[j].setNombre(canciones[j + 1].getNombre());
+                                        canciones[j].setArtista(canciones[j + 1].getArtista());
+                                        canciones[j].setAlbum(canciones[j + 1].getAlbum());
+                                        canciones[j].setDuracion(canciones[j + 1].getDuracion());
+                                        canciones[j + 1].setId(tempid);
+                                        canciones[j + 1].setNombre(tempNombre);
+                                        canciones[j + 1].setArtista(tempArtista);
+                                        canciones[j + 1].setAlbum(tempAlbum);
+                                        canciones[j + 1].setDuracion(tempDuracion);
+                                    }
+                                }
+                            }
+                            for (int i = 0; i < num_canciones; i++)
+                            {
+                                Console.WriteLine("========================");
+                                Console.WriteLine("ID: " + canciones[i].getId());
+                                Console.WriteLine("Nombre: " + canciones[i].getNombre());
+                                Console.WriteLine("Artista: " + canciones[i].getArtista());
+                                Console.WriteLine("Album: " + canciones[i].getAlbum());
+                                Console.WriteLine("Duracion: " + canciones[i].getDuracion());
+                            }
+                            Console.ReadKey();
+                            break;
+                    }
+                    break;
+                case "F":
+                    continuar = false;
+                    break;
+                default:
+                    Console.WriteLine("Opcion erronea");
+                    Console.ReadKey();
+                    break;
+            }
+        } while (continuar);
+    }
+}
